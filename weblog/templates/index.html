@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link href="{% static 'images/favicon.ico' %}" type="image/x-icon" rel="icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link type="text/css" href="{% static 'main.css' %}" rel="stylesheet" />
+    <title>dev-blog</title>
+</head>
+<body id="content">
+    <content>
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                    <h2>Qu<span class="orange">i</span>ck.<span class="orange">li</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">
+                        close
+                    </span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        newspaper
+                    </span>
+                    <h3>News</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        person_outline
+                    </span>
+                    <h3>Users</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        forum
+                        </span>
+                    <h3>Messanger</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        question_mark
+                    </span>
+                    <h3>How it work?</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        report_gmailerrorred
+                    </span>
+                    <h3>Report</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        settings
+                    </span>
+                    <h3>Settings</h3>
+                </a>
+            </div>
+        </aside>
+        
+        <main>
+            <h1 id="page-name">Home</h1>
+            This site created to show my skills of develop.
+            <div class="articles">
+                {%for article in articles%}
+                <div class="article">
+                    <a href="#" onclick="open_article('{{article.article_id}}')">
+                        <h1>{{article.title}}</h1>
+                        <h3>{{article.preview}}</h3>
+                    </a>
+                </div>
+                {%endfor%}
+            </div>
+        </main>
+        
+        <div class="right-section">
+            <div class="nav">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">
+                        menu
+                    </span>
+                </button>
+                <div class="dark-mode">
+                    <span class="material-icons-sharp active">
+                        light_mode
+                    </span>
+                    <span class="material-icons-sharp">
+                        dark_mode
+                    </span>
+                </div>
+
+                <div class="profile">
+                    <div class="info">
+                        <p>Hi, <b>{{username}}</b></p>
+                        <small class="text-muted">{{user_status}}</small>
+                    </div>
+                    <div class="profile-photo">
+                        <a href="#" onclick="login_page()">
+                            <img src="{% static 'images/user.png' %}">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="reminders">
+                <div class="header">
+                    <h2>History</h2>
+                    <span class="material-icons-sharp">
+                        receipt_long
+                    </span>
+                </div>
+                {%for history_obj in history%}
+                <div class="notification">
+                    <div class="icon">
+                        <span class="material-icons-sharp">
+                            history
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="info">
+                            <h3>{{history_obj.title}}</h3>
+                            <small class="text_muted" id="previewText">
+                            {{history_obj.preview}}
+                            </small>
+                        </div>
+                        <a href="#" onclick="">
+                            <span class="material-icons-sharp">
+                                more_vert
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                {%endfor%}
+                <!-- <div class="notification add-reminder">
+                    <div>
+                        <span class="material-icons-sharp">
+                            add
+                        </span>
+                        <h3>Add Reminder</h3>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </content>
+    <popup>
+    <div class="popup-deactive" id="popup">
+        <div class="login-content" id="login-content">
+            <button class="closeDiv" id="closeDiv" onclick="closePopup()">
+                <span class="material-icons-sharp">close</span>
+            </button>
+            <h1 class="login-title" id="login-title">Login</h1>
+            <div class="login-input-div" id="login-input-div">
+                <input class="login-input" maxlength="20" placeholder="Login" id="login" type="text">
+                <input class="login-input" maxlength="15" placeholder="Password" id="password" type="password">
+                <div id="login-to-register-div" class="login-to-register-deactive">
+                    <input class="login-input" maxlength="15" placeholder="Repeat password" id="add-password" type="password">
+                    <br/>
+                    <br/>
+                    <p>News interests?</p>
+                    <br/>
+                    <div class="login-checkbox-div">
+                        <input type="checkbox" name="checkbox1" id="checkbox1">
+                        <label for="checkbox1">Developing</label>
+                    </div>
+                    <br/>
+                    <div class="login-checkbox-div">
+                        <input type="checkbox" name="checkbox2" id="checkbox2">
+                        <label for="checkbox2">Sport</label>
+                    </div><br/>
+                    <div class="login-checkbox-div">
+                        <input type="checkbox" name="checkbox3" id="checkbox3">
+                        <label for="checkbox3">Literature</label>
+                    </div><br/>
+                    <div class="login-checkbox-div">
+                        <input type="checkbox" name="checkbox4" id="checkbox4">
+                        <label for="checkbox4">Crypto</label>
+                    </div><br/>
+                    <div class="login-checkbox-div">
+                        <input type="checkbox" name="checkbox5" id="checkbox5">
+                        <label for="checkbox5">Tech</label>
+                    </div>
+                </div>
+                <input class="login-input-submit" id="login-input-submit" type="submit" value="Continue" onclick="sendLogin()">
+            </div>
+        <a href="#" class="login-to-register-button" id="login-to-register-button" onclick="changeToRegisterPopup()"><h3 class="login-to-register-text" id="login-to-register-text">You don`t have an account?</h3></a>
+        </div>
+    </div>
+    </popup>
+    <script src="https://unpkg.com/cookielib/src/cookie.min.js"></script>
+    <script src="{% static 'main.js' %}"></script>
+</body>
+</html>
