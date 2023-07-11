@@ -1,4 +1,2 @@
-# weblog
-This is a news site where you can add news openly through a telegram bot (When submitting new news to the site, an application for moderation will be filled out).
-
-The code uses several programming languages - Python (For backend), JavaScript (For site dynamics), well as HTML and css.
+# Quick.li
+This is a news site where you can add news openly through a telegram bot (When submitting new news to the site, an application for moderation will be filled out). The functionality of the code is very large. The site has a personal account, extensive settings such as: the choice of filtering news on inetery, the choice of theme site, setting the font site, as well as personalization of your account. Also on the site there are tabs of all news, messenger, as well as report.
